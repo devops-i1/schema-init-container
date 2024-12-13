@@ -5,13 +5,13 @@ if [ -z "${DB_HOST}" ]; then
   exit 1
 fi
 
-if [ -z "${DB_USER}" ]; then
-  echo DB_USER is missing
+if [ -z "${RDS_USER}" ]; then
+  echo RDS_USER is missing
   exit 1
 fi
 
-if [ -z "${DB_PASS}" ]; then
-  echo DB_PASS is missing
+if [ -z "${RDS_PASS}" ]; then
+  echo RDS_PASS is missing
   exit 1
 fi
 
@@ -28,4 +28,4 @@ fi
 git clone https://github.com/devops-i1/${PROJECT_NAME}-${COMPONENT}
 cd ${PROJECT_NAME}-$COMPONENT
 
-mysql -h${DB_HOST} -u${DB_USER} -p${DB_PASS} <schema/${COMPONENT}.sql
+mysql -h${DB_HOST} -u${RDS_USER} -p${RDS_PASS} <schema/${COMPONENT}.sql
